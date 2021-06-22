@@ -92,8 +92,6 @@ class DatabaseManager:
                 """
             )
 
-            self.connection.commit()
-
         print("'{}' created".format(self.db_name))
         print('Path to DB file: {}'.format(path))
 
