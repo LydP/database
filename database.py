@@ -8,14 +8,20 @@ import csv
 
 
 class DatabaseManager:
+    """
+    A class for creating and initializing a DB file with values from a CSV file
+    """
     def __init__(self, db_name):
+        """
+        Init DatabaseManager
+        :param db_name: full name of the database file you wish to create, e.g. "database.db"
+        """
         self.db_name = db_name
         self.connection = sqlite3.connect(db_name)
 
     def create_database(self, create_images=True):
         """
-        Create a .db file in cwd for use by the AISRS app. Only creates tables and columns; does not populate the
-        database with data
+        Create a .db file in cwd. Only creates tables and columns; does not populate the database with data
         :param create_images: true to prepare table for images (blob), false to prepare table for unicode (text)
         :return: None
         """
@@ -74,8 +80,8 @@ class DatabaseManager:
             # popularity - cards.popularity. Used to identify the card.
             # sess_count -  the session number at which this review occurred
             # card_sess_count - the number of sessions in which a card has appeared, i.e. card_sess_count = 1 means the
-            #   card has appeared in 1 session (not same as nrev; should be 1 less than nrev, I think)
-            # riar - (remembered in a row) the number of times the user has remembered a card in a row
+            #   card has appeared in 1 session
+            # riar - remembered in a row: the number of times the user has remembered a card in a row
             cursor.execute(
                 """
                 CREATE TABLE IF NOT EXISTS statistics (
@@ -117,7 +123,7 @@ class DatabaseManager:
                 insert_string = 'INSERT INTO cards (popularity, front, back) VALUES (?, ?, ?)'
 
                 if create_images:
-                    _image_from_text(csvfile)
+                    self._image_from_text(csvfile)
                     for (i, row) in enumerate(csvreader):
                         path = pathlib.Path('card_fronts') / 'image{}.jpg'.format(i + 1)
                         cursor.execute(insert_string, (int(row[0]), str(path), row[2]))
@@ -131,7 +137,7 @@ class DatabaseManager:
 
         print("'{}' populated".format(self.db_name))
 
-    def _image_from_text(csvfile: str, font_size=30, font_file='ARIALUNI.TTF'):
+    def _image_from_text(self, csvfile: str, font_size=30, font_file='ARIALUNI.TTF'):
         """
         Creates images with black text and white backgrounds from csvfile. Prints directory where images are created
         :param csvfile: The csvfile from which to read. Must have column headers and be formatted as index,front,back
