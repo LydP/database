@@ -103,7 +103,7 @@ semicolon). Any desired newlines must be indicated with \n. For example:
 |25|国|くに\n\ncountry|
 |⋮|⋮|⋮|
 
-##Creating images
+## Creating images
 To convert the front text to an image, set ```create_images=True``` in the ```populate_database()``` method. This will
 result in the creation of the card_fronts folder in the current working directory and every item in the Front column of
 the CSV file will be converted into a JPG image and placed in that folder with the name imageN.jpg, where N is the 
