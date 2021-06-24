@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-This is a simple Python class that creates a DB file from a CSV file for use with my SRS project. The class assumes the
+This is a simple Python class that creates a DB file from a UTF-16 CSV file for use with my SRS project. The class assumes the
 CSV has headers with columns in the order popularity,front,back. (Column header names are not important).
 
 - Popularity: the word's rate of occurrence in native speech
@@ -91,7 +91,7 @@ the program the day after closing it mid-session.
 
 ## CSV Formatting
 
-The CSV file must be formatted with the columns popularity,front,back (column header names don't matter, as mentioned
+The CSV file must be encoded with UTF-16 and formatted with the columns popularity,front,back (column header names don't matter, as mentioned
 before). Separate definitions on the back of the cards must be separated by something other than a comma (e.g.
 semicolon). Any desired newlines must be indicated with \n. For example:
 
@@ -110,3 +110,8 @@ the CSV file will be converted into a JPG image and placed in that folder with t
 corresponding popularity value minus one. (File names are zero indexed, popularity values are not). If there are 1000
 entries in the CSV file, there will be 1000 images.
 
+All images will have the same size, determined by the largest item in the Front column. For example, if your CSV 
+consists of the words "back" and "forward", the two images produced will appear as below: 
+
+![Alt text](./examples/image0.jpg?raw=true "Title")  
+![Alt text](./examples/image1.jpg?raw=true "Title")
