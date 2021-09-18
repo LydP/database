@@ -5,7 +5,7 @@
 This is a simple Python class that creates a DB file from a UTF-16 CSV file for use with my SRS project. The class assumes the
 CSV has headers with columns in the order popularity,front,back. (Column header names are not important).
 
-- Popularity: the word's rate of occurrence in native speech
+- Popularity: how common the word is (e.g. a word with a popularity of 1 means this is the most common word)
 - Front: front of the card
 - Back: back of the card
 
