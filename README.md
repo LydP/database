@@ -13,7 +13,7 @@ CSV has headers with columns in the order popularity,front,back. (Column header 
 
 The database file is initialized with the following two commands:
 
-```
+```sql
 CREATE TABLE IF NOT EXISTS cards (
                 popularity INTEGER,
                 front TEXT,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS cards (
                 deck INTEGER);
 ```
 
-```
+```sql
 CREATE TABLE IF NOT EXISTS statistics (
                 popularity INTEGER,
                 sintvl INTEGER,
